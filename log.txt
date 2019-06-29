@@ -1,0 +1,50 @@
+In file included from /usr/include/c++/6/experimental/bits/fs_fwd.h:39:0,
+                 from /usr/include/c++/6/experimental/filesystem:38,
+                 from main.cpp:16:
+/usr/include/c++/6/chrono: In instantiation of ‘struct std::chrono::duration<double, std::chrono::duration<long int, std::ratio<1l, 1000000000l> > >’:
+main.cpp:259:82:   required from here
+/usr/include/c++/6/chrono:247:2: error: static assertion failed: period must be a specialization of ratio
+  static_assert(__is_ratio<_Period>::value,
+  ^~~~~~~~~~~~~
+/usr/include/c++/6/chrono:249:29: error: ‘num’ is not a member of ‘std::chrono::duration<long int, std::ratio<1l, 1000000000l> >’
+  static_assert(_Period::num > 0, "period must be positive");
+                ~~~~~~~~~~~~~^~~
+In file included from /usr/include/c++/6/chrono:38:0,
+                 from /usr/include/c++/6/experimental/bits/fs_fwd.h:39,
+                 from /usr/include/c++/6/experimental/filesystem:38,
+                 from main.cpp:16:
+/usr/include/c++/6/ratio: In instantiation of ‘struct std::__ratio_divide<std::ratio<1l, 1000000000l>, std::chrono::duration<long int, std::ratio<1l, 1000000000l> > >’:
+/usr/include/c++/6/chrono:268:45:   required by substitution of ‘template<class _Rep2, class _Period2, class> constexpr std::chrono::duration<_Rep, _Period>::duration(const std::chrono::duration<_Rep, _Period>&) [with _Rep2 = long int; _Period2 = std::ratio<1l, 1000000000l>; <template-parameter-1-3> = <missing>]’
+main.cpp:259:82:   required from here
+/usr/include/c++/6/ratio:318:30: error: ‘num’ is not a member of ‘std::chrono::duration<long int, std::ratio<1l, 1000000000l> >’
+       static_assert(_R2::num != 0, "division by 0");
+                     ~~~~~~~~~^~~~
+/usr/include/c++/6/ratio:322:42: error: ‘den’ is not a member of ‘std::chrono::duration<long int, std::ratio<1l, 1000000000l> >’
+         ratio<_R2::den, _R2::num>>::type type;
+                                          ^~~~
+main.cpp: In function ‘int main(int, char**)’:
+main.cpp:259:82: error: no matching function for call to ‘std::chrono::duration<double, std::chrono::duration<long int, std::ratio<1l, 1000000000l> > >::duration(std::chrono::duration<long int, std::ratio<1l, 1000000000l> >&)’
+         elapsedTime +=  chrono::duration <double, std::chrono::nanoseconds> (diff).count();
+                                                                                  ^
+In file included from /usr/include/c++/6/experimental/bits/fs_fwd.h:39:0,
+                 from /usr/include/c++/6/experimental/filesystem:38,
+                 from main.cpp:16:
+/usr/include/c++/6/chrono:270:14: note: candidate: template<class _Rep2, class _Period2, class> constexpr std::chrono::duration<_Rep, _Period>::duration(const std::chrono::duration<_Rep, _Period>&)
+    constexpr duration(const duration<_Rep2, _Period2>& __d)
+              ^~~~~~~~
+/usr/include/c++/6/chrono:270:14: note:   template argument deduction/substitution failed:
+/usr/include/c++/6/chrono:263:23: note: candidate: template<class _Rep2, class> constexpr std::chrono::duration<_Rep, _Period>::duration(const _Rep2&)
+    constexpr explicit duration(const _Rep2& __rep)
+                       ^~~~~~~~
+/usr/include/c++/6/chrono:263:23: note:   template argument deduction/substitution failed:
+/usr/include/c++/6/chrono:259:27: error: no type named ‘type’ in ‘struct std::enable_if<false, void>’
+  template<typename _Rep2, typename = typename
+                           ^~~~~~~~
+/usr/include/c++/6/chrono:257:2: note: candidate: std::chrono::duration<_Rep, _Period>::duration(const std::chrono::duration<_Rep, _Period>&) [with _Rep = double; _Period = std::chrono::duration<long int, std::ratio<1l, 1000000000l> >]
+  duration(const duration&) = default;
+  ^~~~~~~~
+/usr/include/c++/6/chrono:257:2: note:   no known conversion for argument 1 from ‘std::chrono::duration<long int, std::ratio<1l, 1000000000l> >’ to ‘const std::chrono::duration<double, std::chrono::duration<long int, std::ratio<1l, 1000000000l> > >&’
+/usr/include/c++/6/chrono:252:12: note: candidate: constexpr std::chrono::duration<_Rep, _Period>::duration() [with _Rep = double; _Period = std::chrono::duration<long int, std::ratio<1l, 1000000000l> >]
+  constexpr duration() = default;
+            ^~~~~~~~
+/usr/include/c++/6/chrono:252:12: note:   candidate expects 0 arguments, 1 provided
